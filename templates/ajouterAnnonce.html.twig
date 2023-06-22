@@ -1,0 +1,18 @@
+{% extends "layout/base.html.twig" %}
+{% form_theme form 'jquery.collection.html.twig' %}
+{% block content %}
+
+    {{ form_start(form, {'attr': {'id': '', 'class': '', 'novalidate': 'novalidate'}}) }}
+    {{ form_widget(form) }}
+    {{ form_end(form) }}
+
+{% endblock %}
+{% block js %}
+
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="{{ asset('plugins/jquery.collection.js') }}"></script>
+    <script type="text/javascript">
+        $('.annonce-images-collection').collection();
+    </script>
+
+{% endblock %}

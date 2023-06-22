@@ -1,0 +1,41 @@
+{% extends "layout/base.html.twig" %}
+
+{% block title %}Accuiel
+{% endblock %}
+
+{% block content %}
+	<form>
+
+		<div class="mb-3 row">
+			<label class="col-form-label col-sm-2 required" for="annonce_titre">mot cles</label>
+			<div class="col-sm-10">
+				<input type="search" id="annonce_titre" name="keyword" value="{{ keyword }}" placeholder="Titre" class="form-control">
+			</div>
+		</div>
+
+		<div class="mb-3 row">
+			<div class="col-sm-2"></div>
+			<div class="col-sm-10">
+				<button type="submit" id="annonce_save" class="btn-primary btn">recherche</button>
+			</div>
+		</div>
+
+	</form>
+
+	<div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+
+		{% for uneAnnonce in annonces  %}
+
+			<div class="col">
+
+				{% include  "layout/annonce-card.html.twig" with {annonce:uneAnnonce} %}
+
+			</div>
+
+		{% endfor %}
+
+
+	</div>
+
+	{{ knp_pagination_render(annonces, null, {}, {'align': 'center'}) }}
+{% endblock %}
